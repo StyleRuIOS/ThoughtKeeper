@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97186BA3239460AE00629B3C /* ThoughtInputAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97186BA2239460AE00629B3C /* ThoughtInputAlertController.swift */; };
 		CEE3244A2385A64700611E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE324492385A64700611E10 /* AppDelegate.swift */; };
 		CEE3244C2385A64700611E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3244B2385A64700611E10 /* SceneDelegate.swift */; };
 		CEE324512385A64700611E10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE3244F2385A64700611E10 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97186BA2239460AE00629B3C /* ThoughtInputAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThoughtInputAlertController.swift; path = ThoughtKeeper/View/ThoughtInputAlertController.swift; sourceTree = SOURCE_ROOT; };
 		CEE324462385A64700611E10 /* ThoughtKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThoughtKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE324492385A64700611E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEE3244B2385A64700611E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		CEE324642385A81700611E10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97186BA2239460AE00629B3C /* ThoughtInputAlertController.swift */,
 				CEE324622385A80800611E10 /* ThoughtsTableViewController.swift */,
 			);
 			path = Controllers;
@@ -190,6 +193,7 @@
 				CEE324612385A7B500611E10 /* ThoughtCollectionViewCell.swift in Sources */,
 				CEE3244A2385A64700611E10 /* AppDelegate.swift in Sources */,
 				CEE3244C2385A64700611E10 /* SceneDelegate.swift in Sources */,
+				97186BA3239460AE00629B3C /* ThoughtInputAlertController.swift in Sources */,
 				CEE324692385B3B500611E10 /* ThoughtCategoryModel.swift in Sources */,
 				CEE324662385AE3300611E10 /* ThoughtModel.swift in Sources */,
 				CEE324632385A80800611E10 /* ThoughtsTableViewController.swift in Sources */,
