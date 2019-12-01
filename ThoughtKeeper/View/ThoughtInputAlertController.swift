@@ -9,18 +9,23 @@
 import UIKit
 
 protocol ThoughtInputDelegate: class {
+    ///Update UI with provided text
     func updateEnteredThought(text: String)
 }
 
 class ThoughtInputAlertController: UIAlertController {
 
+    //MARK:- Properties
     weak var delegate: ThoughtInputDelegate?
+
+    //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         createTextField()
         addActions()
     }
 
+    //MARK:- Methods
     private func createTextField() {
         self.addTextField { (textField) in
             textField.placeholder = "Enter your new thought..."

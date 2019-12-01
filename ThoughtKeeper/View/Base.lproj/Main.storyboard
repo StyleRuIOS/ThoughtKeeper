@@ -65,15 +65,6 @@
                                             <outlet property="textLabel" destination="Yjo-s7-qDa" id="e10-bu-g1m"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Secondary Cell" id="Wfb-KT-HwX">
-                                        <rect key="frame" x="0.5" y="177" width="413" height="167"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hpl-VQ-1gJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="413" height="167"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>

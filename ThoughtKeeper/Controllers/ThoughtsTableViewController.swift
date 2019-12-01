@@ -10,29 +10,30 @@ import UIKit
 
 class ThoughtsTableViewController: UIViewController {
 
+    //MARK:- Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+
+    //MARK:- Properites
     private var storedThought = [Thought]()
     private var storedCategories = [ThoughtCategory]()
 
+    //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        createCategories()
-        createThoughts()
     }
 
-    private func createThoughts() {
-        for index in 0 ..< 10 {
-            let categoryForThought = storedCategories[index % 2]
-            let thought = Thought(id: index, text: "I think, that ...", category: categoryForThought)
-            storedThought.append(thought)
-        }
+    //MARK:- IBActions
+    @IBAction func addButtonPressed(_ sender: Any) {
+        showThoughtEnteringView()
     }
 
-    private func createCategories() {
-        storedCategories.append(ThoughtCategory(id: 0, title: "Useless"))
-        storedCategories.append(ThoughtCategory(id: 1, title: "Painfull"))
+    //MARK:- Routing
+    private func showThoughtEnteringView() {
+        let thoughtInputAlertController = ThoughtInputAlertController(title: "New thought", message: nil, preferredStyle: .alert)
+        thoughtInputAlertController.delegate = self
+        present(thoughtInputAlertController, animated: true, completion: nil)
     }
 }
 
@@ -44,16 +45,10 @@ extension ThoughtsTableViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row % 2 == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Main Cell", for: indexPath) as! ThoughtCollectionViewCell
-            cell.textLabel.text = storedThought[indexPath.row].text
-            cell.tagLabel.text = storedThought[indexPath.row].category.title
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Secondary Cell", for: indexPath)
-            return cell
-        }
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Main Cell", for: indexPath) as! ThoughtCollectionViewCell
+        cell.textLabel.text = storedThought[indexPath.row].text
+        cell.tagLabel.text = storedThought[indexPath.row].category.title
+        return cell
     }
 }
 
@@ -63,4 +58,14 @@ extension ThoughtsTableViewController: UICollectionViewDelegateFlowLayout {
         let concideredSize = CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width / 2)
         return concideredSize
     }
+}
+
+//MARK:- ThoughtInputDelegate
+extension ThoughtsTableViewController: ThoughtInputDelegate {
+
+   func updateEnteredThought(text: String) {
+          let thought = Thought(id: 0, text: text, category: ThoughtCategory(id: 0, title: "Useless"))
+          storedThought.append(thought)
+          collectionView.reloadData()
+      }
 }
