@@ -56,10 +56,10 @@ extension ThoughtsTableViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let alertViewController = ThoughtInputAlertController(title: "Edit", message: "Enter new label", preferredStyle: .alert)
-        alertViewController.delegate = self
-        alertViewController.selectedCellIndexPath = indexPath.row
-        present(alertViewController, animated: true, completion: nil)
+        weak var alertViewController = ThoughtInputAlertController(title: "Edit", message: "Enter new label", preferredStyle: .alert)
+        alertViewController?.delegate = self
+        alertViewController?.selectedCellIndexPath = indexPath.row
+        present(alertViewController!, animated: true, completion: nil)
     }
 }
 

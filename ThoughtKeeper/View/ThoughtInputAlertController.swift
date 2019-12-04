@@ -35,14 +35,19 @@ class ThoughtInputAlertController: UIAlertController {
     }
 
     private func addActions() {
-        let addAction = UIAlertAction(title: "Add", style: .default) { (_) in
-            if let textField = self.textFields?.first {
+        let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] (_) in
+            if let textField = self?.textFields?.first {
                 //self.delegate?.updateEnteredThought(text: textField.text!)
-                self.delegate?.updateCellLabel(with: textField.text!, at: self.selectedCellIndexPath)
+                self?.delegate?.updateCellLabel(with: textField.text!, at: self?.selectedCellIndexPath ?? 0)
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         self.addAction(addAction)
         self.addAction(cancelAction)
+    }
+
+    //MARK:- Deinit
+    deinit {
+        print("I'm gone!")
     }
 }
