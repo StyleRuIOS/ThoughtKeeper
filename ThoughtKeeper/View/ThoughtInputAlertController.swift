@@ -11,12 +11,14 @@ import UIKit
 protocol ThoughtInputDelegate: class {
     ///Update UI with provided text
     func updateEnteredThought(text: String)
+    func updateCellLabel(with text: String, at index: Int)
 }
 
 class ThoughtInputAlertController: UIAlertController {
 
     //MARK:- Properties
     weak var delegate: ThoughtInputDelegate?
+    var selectedCellIndexPath: Int!
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -35,7 +37,8 @@ class ThoughtInputAlertController: UIAlertController {
     private func addActions() {
         let addAction = UIAlertAction(title: "Add", style: .default) { (_) in
             if let textField = self.textFields?.first {
-                self.delegate?.updateEnteredThought(text: textField.text!)
+                //self.delegate?.updateEnteredThought(text: textField.text!)
+                self.delegate?.updateCellLabel(with: textField.text!, at: self.selectedCellIndexPath)
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)

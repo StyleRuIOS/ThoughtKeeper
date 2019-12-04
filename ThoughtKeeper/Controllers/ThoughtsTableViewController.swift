@@ -14,7 +14,11 @@ class ThoughtsTableViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     //MARK:- Properites
-    private var storedThought = [Thought]()
+    private var storedThought = [
+        Thought(id: 1, text: "1", category: ThoughtCategory(id: 1, title: "Some")),
+        Thought(id: 1, text: "2", category: ThoughtCategory(id: 1, title: "Some")),
+        Thought(id: 1, text: "3", category: ThoughtCategory(id: 1, title: "Some"))
+    ]
     private var storedCategories = [ThoughtCategory]()
 
     //MARK:- Lifecycle
@@ -50,6 +54,13 @@ extension ThoughtsTableViewController: UICollectionViewDelegate, UICollectionVie
         cell.tagLabel.text = storedThought[indexPath.row].category.title
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let alertViewController = ThoughtInputAlertController(title: "Edit", message: "Enter new label", preferredStyle: .alert)
+        alertViewController.delegate = self
+        alertViewController.selectedCellIndexPath = indexPath.row
+        present(alertViewController, animated: true, completion: nil)
+    }
 }
 
 //MARK:- CollectionView Displaying
@@ -62,6 +73,13 @@ extension ThoughtsTableViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK:- ThoughtInputDelegate
 extension ThoughtsTableViewController: ThoughtInputDelegate {
+
+    func updateCellLabel(with text: String, at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath) as! ThoughtCollectionViewCell
+        storedThought[index].text = text
+        collectionView.reloadData()
+    }
 
    func updateEnteredThought(text: String) {
           let thought = Thought(id: 0, text: text, category: ThoughtCategory(id: 0, title: "Useless"))
